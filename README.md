@@ -1,34 +1,3 @@
-# Manager App BackEnd
-
-## Prerequisites
-
-- MongoDB: 
-1) Register on mongodb.com and create Shared Claster. 
-2) Create a user for database (userName & password)
-3) IP Access List - add 0.0.0.0
-4) Click "Connect" button and select "Connetct your application"
-5) Copy claster info from connection string. By default - "claster0.xxxxxx"
-
-## Downloading
-
-```bash
-git clone {repository URL}
-cd back-manager-app
-```
-
-## Connect to your DataBase on MongoDB
-- open src/index.ts. In mongoose.connect method replace ${} by userName, Password and ClasterInfo from Prerequisites
-
-## Run Xeroku
-Run commands
-
-```bash
-git switch source
-heroku create --region eu
-heroku git:remote -a <YOUR_APP_NAME>
-git push heroku source:master
-```
-
 # REST service docs
 
 ## Endpoints:
@@ -94,15 +63,6 @@ git push heroku source:master
   - `PACTH /:pointId` - Change title and done
   - `PACTH /` - Change done filed in set of points
   - `DELETE /:pointId` - delete point
-
-# Advanced
-
-## Socket Events
-- events: "users", "boards", "columns", "tasks", "files", "points"
-Listen events on backend deploy main route (soket = io('https://xxx.herokuapp.com'))
-- socket payload: 
-```bash
-{
   action: 'add' | 'update' | 'delete' // Тип изменения в базе
   users: string[] // Список id юзеров, которые имеют доступ к данным об обновлении чего-то в базе(Например, при изменении колонки здесь будет список из владельца доски и приглашенных на нее пользователей)
   ids: string[] // Список id созданных/измененных/удаленных записей в базе
